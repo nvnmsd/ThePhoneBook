@@ -1,0 +1,11 @@
+* {
+    background-color: rgb(166, 195, 199);
+}
+
+.nav-item :hover {
+    background-color: rgb(120, 133, 121);
+}
+
+.isActive {
+    background-color: rgb(142, 170, 172);
+}
