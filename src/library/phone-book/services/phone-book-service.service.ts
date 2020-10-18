@@ -21,18 +21,15 @@ export class PhoneBookService {
    * @returns data stream of type UserQuery[]
    */
   getUserData (firstName?: string, lastName?: string, email?: string): Observable<UserQuery[]> {
-    // let url = `http://localhost:3000/contacts?first_name=${firstName}&last_name=${lastName}&email=${email}`;
     let url = 'http://localhost:3000/contacts';
     if (firstName || lastName || email) url += '?';
     if (firstName) url += `first_name=${firstName}`;
-    if (lastName) url += `last_name=${lastName}`;
-    if (email) url += `email=${email}`;
+    if (lastName) url += `&last_name=${lastName}`;
+    if (email) url += `&email=${email}`;
     return this.http.get<UserQuery[]>(url).pipe(
       catchError(this.errorHandler)
     )
   }
-
-
   private errorHandler (error: HttpErrorResponse) {
     return throwError(error);
   }

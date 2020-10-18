@@ -1,0 +1,31 @@
+
+<div *ngIf="userDataList?.length > 0" class="data-table">
+    <p-table [value]="userDataList" styleClass="p-datatable-striped p-datatable-striped">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 5%;">ID</th>
+                <th style="width: 13%;">First Name</th>
+                <th style="width: 13%;">Last Name</th>
+                <th style="width: 20%;">Email</th>
+                <th style="width: 15%;">Department</th>
+                <th style="width: 15%;">Company Name</th>
+                <th style="width: 15%;"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+            <tr>
+                <td>{{data.id}}</td>
+                <td class="text-wrap">{{data.first_name}}</td>
+                <td class="text-wrap">{{data.last_name}}</td>
+                <td class="text-wrap">{{data.email}}</td>
+                <td class="text-wrap">{{data.department}}</td>
+                <td class="text-wrap">{{data.company_name}}</td>
+                <td>
+                <button class="btn btn-primary btn-sm" (click)="onViewDetails(data.first_name)">
+                    View Details</button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+

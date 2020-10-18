@@ -1,5 +1,6 @@
 {
-    "contacts": [{
+    "contacts": [
+    {
       "id": 1,
       "first_name": "Otto",
       "last_name": "Rydeard",
@@ -1099,6 +1100,17 @@
       "language": "Hiri Motu",
       "gender": "Female",
       "preferred_color": "Khaki"
+    }, {
+      "id": 101,
+      "first_name": "Adrian",
+      "last_name": "Poulett",
+      "email": "adrnlett2r@joomla.org",
+      "job_title": "Statistician",
+      "department": "Legal",
+      "company_name": "Yambeez",
+      "language": "Hindi",
+      "gender": "Male",
+      "preferred_color": "Grey"
     }
     ]     
 }
