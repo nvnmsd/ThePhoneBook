@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PhoneBookListComponent implements OnInit, OnDestroy {
   public userDataList: UserQuery[];
+  public retainedDataList: UserQuery[];
   public subscription: Subscription;
 
   constructor(
@@ -24,6 +25,11 @@ export class PhoneBookListComponent implements OnInit, OnDestroy {
     this.subscription = this.interactionService.getRelayedMessage$.subscribe(res => {
       this.userDataList = res
     });
+
+    if (this.retainedDataList !== null) {
+      this.userDataList = this.retainedDataList;
+    }
+
   }
 
   /**
@@ -31,7 +37,8 @@ export class PhoneBookListComponent implements OnInit, OnDestroy {
    * @params selectedUser contains the selected user data object.
    */
   public onViewDetails (selectedUser: string): void {
-    this.router.navigate(['/userdetail', {firstName: selectedUser}], {relativeTo: this.route});
+    this.retainedDataList = this.userDataList;
+    this.router.navigate(['/userdetail', {ID: selectedUser}], {relativeTo: this.route});
   }
 
   ngOnDestroy() {

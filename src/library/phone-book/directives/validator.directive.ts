@@ -19,7 +19,7 @@ export class ValidatorDirective implements Validator{
    * Validator function to validate the email input field.
    * @param control Abstract Control of the form
    */
-  validate(control: AbstractControl) : ValidationErrors | any {
+  validate(control: AbstractControl) : ValidationErrors | null {
     if(control.value !== null || control.value !== "") {
       return !/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(control.value) ? 
       {'isEmailInvalid' : true} : null;

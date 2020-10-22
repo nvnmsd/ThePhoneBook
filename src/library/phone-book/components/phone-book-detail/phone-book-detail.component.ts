@@ -29,7 +29,7 @@ export class PhoneBookDetailComponent implements OnInit, OnDestroy {
    */
   private getSelectedUser (): void {
     this.activateRoute.paramMap.subscribe(res => {
-      const userName = res.get('firstName');
+      const userName = res.get('ID');
       this.getUserDetail(userName);
     },
     err => console.log(err))

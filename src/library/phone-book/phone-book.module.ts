@@ -16,7 +16,7 @@ import { ValidatorDirective } from './directives/validator.directive';
     ViewPhoneBookComponent, 
     SearchPhoneBookComponent, 
     PhoneBookListComponent, 
-    PhoneBookDetailComponent, 
+    PhoneBookDetailComponent,
     ValidatorDirective
   ],
   imports: [

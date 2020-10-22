@@ -15,15 +15,17 @@ export class PhoneBookService {
 
   /**
    * This service is to get the user data based on the search
+   * @param ID of the user
    * @param firstName firstname of the user
    * @param lastName lastName of the user
    * @param email email of the user
    * @returns data stream of type UserQuery[]
    */
-  getUserData (firstName?: string, lastName?: string, email?: string): Observable<UserQuery[]> {
+  getUserData (ID?: string, firstName?: string, lastName?: string, email?: string): Observable<UserQuery[]> {
     let url = 'http://localhost:3000/contacts';
-    if (firstName || lastName || email) url += '?';
+    if (firstName || lastName || email || ID) url += '?';
     if (firstName) url += `first_name=${firstName}`;
+    if (ID) url += `&id=${ID}`;
     if (lastName) url += `&last_name=${lastName}`;
     if (email) url += `&email=${email}`;
     return this.http.get<UserQuery[]>(url).pipe(

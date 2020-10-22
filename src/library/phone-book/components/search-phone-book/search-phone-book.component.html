@@ -2,7 +2,15 @@
     <h3 class="heading">Search Phone Book</h3>
     <form #userQueryForm="ngForm">
         <div class="form-row">
-          <div class="col-3">
+          <div class="col-2">
+            <input type="text" name="id" #userID="ngModel" class="form-control"
+            [(ngModel)]="userQuery.id" pattern="^[0-9]+$" placeholder="Id">
+            <div *ngIf="userID.touched && userID.dirty">
+                <span *ngIf="userID.errors?.pattern" class="text-danger">
+                    <small>Please enter valid id</small></span>
+            </div>
+          </div>
+          <div class="col-2">
             <input type="text" name="firstName" #userFirstName="ngModel" class="form-control" id="firstName"
             [(ngModel)]="userQuery.firstName" pattern="^[a-zA-Z ]*$" placeholder="First Name">
             <div *ngIf="userFirstName.touched && userFirstName.dirty">
@@ -10,7 +18,7 @@
                     <small>Please enter valid name</small></span>
             </div>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <input type="text" name="lastName" #userLastName="ngModel" class="form-control" id="lastName"
             [(ngModel)]="userQuery.lastName" pattern="^[a-zA-Z ]*$" placeholder="Last Name">
             <span *ngIf="userLastName.touched && userLastName.dirty">
@@ -26,11 +34,10 @@
                     <small>Please enter valid email</small></span>
             </span>
           </div>
-          <div class="col-1">
-            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Search</button>
-          </div>
-          <div class="col-2" style="padding-left: 20px;">
-            <button type="submit" class="btn btn-primary" (click)="onSubmit()">All Contacts</button>
+          <div class="col-2">
+            <button type="submit" class="btn btn-primary"
+            [disabled]="!(userID.touched || userFirstName.touched || userLastName.touched || userEmail.touched)"
+            (click)="onSubmit()">Search</button>
           </div>
         </div>
       </form>

@@ -24,13 +24,14 @@ export class SearchPhoneBookComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.onSubmit();
   }
 
   /**
    * Method to fetch the user data 
    */
   onSubmit(): void {
-    this.subscription = this.phoneBookService.getUserData(this.userQuery.firstName, this.userQuery.lastName, this.userQuery.email)
+    this.subscription = this.phoneBookService.getUserData(this.userQuery.id, this.userQuery.firstName, this.userQuery.lastName, this.userQuery.email)
     .subscribe(res => {
       if (res.length > 0) {
         this.dataList = res;
